@@ -13,8 +13,12 @@ public class PlayerControl : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.W)) {
             jump = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            character.Attack();
         }
     }
 
