@@ -14,7 +14,7 @@ public class Attackable : MonoBehaviour
     }
 
     public void Hit(Transform attacker, float force) {
-        Vector2 attackerPosition = new Vector2(attacker.position.x, attacker.position.y);
+        Vector2 attackerPosition = new Vector2(attacker.position.x, transform.position.y);
         Vector2 objectPosition = new Vector2(transform.position.x, transform.position.y);
 
         Vector2 forceVector = ((objectPosition - attackerPosition).normalized)*force;

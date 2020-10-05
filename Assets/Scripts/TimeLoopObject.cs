@@ -6,10 +6,10 @@ public class TimeLoopObject : MonoBehaviour
 {
 
     private Vector3 startingPosition;
-    private GameManager gameManager;
+    protected GameManager gameManager;
 
     // Start is called before the first frame update
-    void Awake()
+    protected virtual void Awake()
     {
         startingPosition = transform.position;
 
@@ -19,7 +19,7 @@ public class TimeLoopObject : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Reset() {
+    public virtual void Reset() {
         transform.position = startingPosition;
     }
 }

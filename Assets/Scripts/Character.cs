@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : TimeLoopObject
 {
     private Animator animator;
     private Rigidbody2D rig;
@@ -26,6 +26,11 @@ public class Character : MonoBehaviour
     public float jumpForce = 6f;
 
     private bool facingRight = true;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     // Start is called before the first frame update
     void Start()

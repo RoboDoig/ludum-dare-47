@@ -2,25 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndGoal : MonoBehaviour
+public class EndGoal : TimeLoopObject
 {
 
-    private GameManager gameManager;
     public float endForce; // How much downward force player needs to exert to activate
+    private bool isActive = false;
 
-    void Start() {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    protected override void Awake()
+    {
+        base.Awake();
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         Character playerCheck = collision.transform.GetComponent<Character>();
-        Debug.Log(playerCheck);
         if (playerCheck != null) {
             // Player collided, check enough downward force
+            Debug.Log(playerCheck.GetLastYVelocity());
             if (playerCheck.GetLastYVelocity() <= endForce) {
                 // level end 
-                gameManager.LevelEnd();
+                if (isActive)
+                    gameManager.LevelEnd();
             }
         }
+    }
+
+    public void Activate() {
+        isActive = true;
+    }
+
+    public void Deactivate() {
+        isActive = false;
     }
 }
